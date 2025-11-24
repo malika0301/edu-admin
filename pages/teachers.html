@@ -22,8 +22,9 @@
         </svg>
     </button>
 
+
     <aside id="logo-sidebar"
-        class="fixed top-0 border left-0 z-40 w-64 h-full transition-transform -translate-x-full sm:translate-x-0"
+        class="fixed top-0 left-0 z-40 w-64 h-full transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-white border-e border-default">
             <a href="../index.html" class="flex items-center ps-2.5 mb-5">
@@ -44,7 +45,7 @@
                         <span class="ms-3">Dashboard</span>
                     </a>
                 </li>
-                <li class="bg-gradient-to-r from-blue-800 text-white to-red-600 rounded-[15px] py-[10px]">
+                <li class="bg-gradient-to-r from-blue-500 text-white to-purple-600 rounded-[15px] py-[10px]">
                     <a href="./teachers.html"
                         class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
                         <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand"
@@ -83,16 +84,17 @@
             </ul>
         </div>
     </aside>
-    <div class="p-4 sm:ml-60 z-1">
+    <div class="relative p-4 sm:ml-60 z-10">
         <div class="bg-[white] fixed top-0 w-full p-[20px] border-y">
             <h1 class="font-bold text-[20px]">School Management System1</h1>
         </div>
     </div>
-    <div class="p-[50px] sm:ml-60 sm:mt-[80px] lg:mt-[0px]">
+    <div class="p-[50px] sm:ml-60 mt-[20px]">
 
-        <div class="flex items-center justify-between mt-[30px] mb-[25px]">
+        <div class="flex items-center justify-between mb-[25px]">
             <div>
-                <h1 class="font-bold text-[18px]">Teachers</h1>
+                <h1 class="font-bold text-[22px]">Teachers</h1>
+                <p class="text-gray-600">Showing 24 of 24 teachers</p>
             </div>
             <div>
                 <div class="z-1 mt-[50px]">
@@ -100,61 +102,142 @@
                         class=" px-[10px] py-[10px] rounded-[50px] bg-gradient-to-r from-yellow-500 to-red-600 text-white bg-gray/50 border hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
                         type="button">+ Add Teacher
                     </button>
-
-                    <div id="crud-modal" tabindex="-1"
-                        class="hidden bg-[grey]/50 h-full z-2 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                        <div class="relative p-4 rounded-[25px] w-full max-w-md max-h-full bg-white">
-
-                            <div
-                                class="relative bg-neutral-primary-soft border border-default rounded-[25px] shadow-sm p-4 md:p-6">
-
-                                <div>
-                                    <button type="button"
-                                        class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-base text-sm w-9 h-9 ms-auto inline-flex justify-center items-center"
-                                        data-modal-hide="crud-modal">
-                                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                            width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
-                                        </svg>
-                                        <span class="sr-only">Close modal</span>
-                                    </button>
-                                </div>
-                                <form id="form" action="#">
-                                    <div class=" py-4 md:py-6">
-                                        <div class="grid grid-cols-2 gap-[20px] col-span-2">
-                                        <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="text" placeholder="FullName">
-                                        <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="number" placeholder="Age">
-                                        <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="text" placeholder="Avatar">
-                                        <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="number" placeholder="Experience">
-                                        <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="text" placeholder="Profession">
-                                        <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="number" placeholder="Number">
-                                        <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="text" placeholder="Email">
-                                        <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="text" placeholder="UserName">
-                                        <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="text" placeholder="Linkedin">
-                                        <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="number" placeholder="Rating">
-                                        <div class="flex gap-[5px]">
-                                            <input id="gender" class="border-[blue] w-[20px] h-[20px] rounded-[5px] py-[2px] px-[10px] outline-none" type="checkbox" placeholder="Gender">
-                                            <label for="gender">Male?</label>
-                                        </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="flex items-center justify-center space-x-4 border-t border-default pt-4 md:pt-6">
-                                        <button data-modal-hide="crud-modal" type="submit"
-                                            class="inline-flex items-center bg-gradient-to-r from-green-500 to-blue-900 hover:from-green-400 hover:to-blue-800 px-[40px] text-white font-bold rounded-[20px] focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
-                                            Submit
-                                        </button>
-                                        <button data-modal-hide="crud-modal" type="button"
-                                            class="text-body bg-gradient-to-r from-red-700 to-orange-500 hover:from-red-600 hover:to-orange-400 text-white px-[40px] font-bold rounded-[20px] hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Cancel</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
+        </div>
+        <div id="crud-modal" tabindex="-1"
+            class="hidden bg-[grey]/50 h-full z-2 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 rounded-[25px] w-full max-w-md max-h-full bg-white">
+
+                <div class="relative bg-neutral-primary-soft border border-default rounded-[25px] shadow-sm p-4 md:p-6">
+
+                    <div>
+                        <button type="button"
+                            class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-base text-sm w-9 h-9 ms-auto inline-flex justify-center items-center"
+                            data-modal-hide="crud-modal">
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                    </div>
+                    <form id="form" action="#">
+                        <div class=" py-4 md:py-6">
+                            <div class="grid grid-cols-2 gap-[20px] col-span-2">
+                                <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="text"
+                                    placeholder="FullName">
+                                <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="number"
+                                    placeholder="Age">
+                                <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="text"
+                                    placeholder="Avatar">
+                                <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="number"
+                                    placeholder="Experience">
+                                <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="text"
+                                    placeholder="Profession">
+                                <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="number"
+                                    placeholder="Number">
+                                <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="text"
+                                    placeholder="Email">
+                                <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="text"
+                                    placeholder="UserName">
+                                <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="text"
+                                    placeholder="Linkedin">
+                                <input class="border-[blue] rounded-[5px] py-[2px] px-[10px] outline-none" type="number"
+                                    placeholder="Rating">
+                                <div class="flex gap-[5px]">
+                                    <input id="gender"
+                                        class="border-[blue] w-[20px] h-[20px] rounded-[5px] py-[2px] px-[10px] outline-none"
+                                        type="checkbox" placeholder="Gender">
+                                    <label for="gender">Male?</label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="flex items-center justify-center space-x-4 border-t border-default pt-4 md:pt-6">
+                            <button data-modal-hide="crud-modal" type="submit"
+                                class="inline-flex items-center bg-gradient-to-r from-green-500 to-blue-900 hover:from-green-400 hover:to-blue-800 px-[40px] text-white font-bold rounded-[20px] focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                                Submit
+                            </button>
+                            <button data-modal-hide="crud-modal" type="button"
+                                class="text-body bg-gradient-to-r from-red-700 to-orange-500 hover:from-red-600 hover:to-orange-400 text-white px-[40px] font-bold rounded-[20px] hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="relative mb-[15px]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-search absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
+                    aria-hidden="true">
+                    <path d="m21 21-4.34-4.34"></path>
+                    <circle cx="11" cy="11" r="8"></circle>
+                </svg><input type="text" data-slot="input"
+                    class="text-gray-600 file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive pl-10 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+                    placeholder="Search teachers by name, email, or profession..." value=""></div>
+            <section>
+                <div class="flex gap-[20px] mb-[30px] text-gray-600">
+                    <form class="outline-none">
+                        <select
+                            class="border-[1px] text-[14px] border-gray-300 rounded-[10px] outline-none w-[140px] py-[5px] px-[15px]"
+                            name="gender" id="gender">
+                            <option class="" value="">All Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </form>
+
+                    <form class="outline-none">
+                        <select
+                            class="border-[1px] text-[14px] border-gray-300 rounded-[10px] outline-none w-[170px] py-[5px] px-[15px]"
+                            name="gender" id="gender">
+                            <option class="" value="">All Experience</option>
+                            <option value="">0-5 years</option>
+                            <option value="">6-10 years</option>
+                            <option value="">11-20 years</option>
+                            <option value="">20+ years</option>
+                        </select>
+                    </form>
+
+                    <form class="outline-none">
+                        <select
+                            class=" border-[1px] text-[14px] border-gray-300 rounded-[10px] outline-none w-[170px] py-[5px] px-[15px]"
+                            name="gender" id="gender">
+                            <option class="" value="">All Rating</option>
+                            <option value="">4.5+ stars</option>
+                            <option value="">4.0+ stars</option>
+                            <option value="">3.5+ stars</option>
+                        </select>
+                    </form>
+
+                    <form class="outline-none">
+                        <select
+                            class="border-[1px] text-[14px] border-gray-300 rounded-[10px] outline-none w-[170px] py-[5px] px-[15px]"
+                            name="gender" id="gender">
+                            <option class="" value="">All Profession</option>
+                            <option value="">History</option>
+                            <option value="">Biology</option>
+                            <option value="">Music</option>
+                            <option value="">Physics</option>
+                            <option value="">Computer Science</option>
+                            <option value="">Mathematics</option>
+                            <option value="">English Literature</option>
+                            <option value="">Art</option>
+                            <option value="">Chemistry</option>
+                            <option value="">Physical Education</option>
+                            <option value=""></option>
+                        </select>
+                    </form>
+
+                    <button class="flex hidden items-center gap-2 bg-gray-200 py-[6px] px-[12px] rounded-[10px]">
+                        <img class="object-cover" src="../assets/image/cross-small.png" alt="">
+                        <p>Clear Filters</p>
+                    </button>
+                </div>
+            </section>
         </div>
         <div id="teacher-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[20px]">
         </div>

@@ -56,7 +56,7 @@
                         <span class="flex-1 ms-3 whitespace-nowrap">Teachers</span>
                     </a>
                 </li>
-                <li class="bg-gradient-to-r from-blue-800 text-white to-red-600 rounded-[15px] py-[10px]">
+                <li class="bg-gradient-to-r from-blue-500 text-white to-purple-600 rounded-[15px] py-[10px]">
                     <a href="./students.html"
                         class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
                         <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand"
@@ -84,10 +84,90 @@
         </div>
     </aside>
 
-    <div class="p-4 sm:ml-64">
-        <h1 class="font-bold text-[20px]">School Management System2</h1>
+    <div class="relative p-4 sm:ml-60 z-10">
+        <div class="bg-[white] fixed top-0 w-full p-[20px] border-y">
+            <h1 class="font-bold text-[20px]">School Management System1</h1>
+        </div>
     </div>
+    <div class="p-[50px] sm:ml-60 mt-[20px]">
+        <div class="flex items-center justify-between mb-[25px]">
+            <div>
+                <h1 class="font-bold text-[22px]">Students</h1>
+                <p class="text-gray-600">Showing 80 of 80 students</p>
+            </div>
+            <div>
+                <div class="z-1 mt-[50px]">
+                    <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+                        class=" px-[12px] py-[10px] rounded-[10px] bg-gradient-to-r from-blue-500 to-purple-600 text-white bg-gray/50 border hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                        type="button">+ Add Student
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="relative mb-[15px]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-search absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
+                    aria-hidden="true">
+                    <path d="m21 21-4.34-4.34"></path>
+                    <circle cx="11" cy="11" r="8"></circle>
+                </svg><input type="text" data-slot="input"
+                    class="text-gray-600 file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive pl-10 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+                    placeholder="Search teachers by name, email, or profession..." value=""></div>
+            <section>
+                <div class="flex gap-[20px] mb-[30px] text-gray-900">
+                    <form class="outline-none">
+                        <select
+                            class="border-[1px] text-[14px] border-gray-300 rounded-[10px] outline-none w-[140px] py-[5px] px-[15px]"
+                            name="gender" id="gender">
+                            <option class="" value="">All Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </form>
 
+                    <form class="outline-none">
+                        <select
+                            class="border-[1px] text-[14px] border-gray-300 rounded-[10px] outline-none w-[170px] py-[5px] px-[15px]"
+                            name="gender" id="gender">
+                            <option class="" value="">All Age</option>
+                            <option value="">6-10 years</option>
+                            <option value="">11-14 years</option>
+                            <option value="">15-18 years</option>
+                        </select>
+                    </form>
+
+                    <form class="outline-none">
+                        <select class="border-[1px] text-[14px] border-gray-300 rounded-[10px] outline-none w-[170px] py-[5px] px-[15px]"
+                            name="gender" id="gender">
+                            <option class="" value="">All Grade</option>
+                            <option value="">Grade 1-4</option>
+                            <option value="">Grade 5-8</option>
+                            <option value="">Grade 9-12</option>
+                        </select>
+                    </form>
+
+
+                    <form class="outline-none">
+                        <select
+                            class=" border-[1px] text-[14px] border-gray-300 rounded-[10px] outline-none w-[170px] py-[5px] px-[15px]"
+                            name="gender" id="gender">
+                            <option class="" value="">All Rating</option>
+                            <option value="">4.5+ stars</option>
+                            <option value="">4.0+ stars</option>
+                            <option value="">3.5+ stars</option>
+                        </select>
+                    </form>
+
+                    <button class="flex hidden items-center gap-2 bg-gray-200 py-[6px] px-[12px] rounded-[10px]">
+                        <img class="object-cover" src="../assets/image/cross-small.png" alt="">
+                        <p>Clear Filters</p>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
     <script src="../js/students.js"></script>
 </body>
 
