@@ -98,15 +98,15 @@
             </div>
             <div>
                 <div class="z-1 mt-[50px]">
-                    <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
-                        class=" px-[10px] py-[10px] rounded-[50px] bg-gradient-to-r from-yellow-500 to-red-600 text-white bg-gray/50 border hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                    <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" id="add-teacher-btn"
+                        class="px-[10px] py-[10px] rounded-[10px] bg-gradient-to-r from-yellow-500 to-red-600 text-white bg-gray/50 border hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
                         type="button">+ Add Teacher
                     </button>
                 </div>
             </div>
         </div>
         <div id="crud-modal" tabindex="-1"
-            class="hidden bg-[grey]/50 h-full z-2 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            class="hidden bg-[grey]/50 h-full z-2 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full flex justify-center items-center">
             <div class="relative p-4 rounded-[25px] w-full max-w-md max-h-full bg-white">
 
                 <div class="relative bg-neutral-primary-soft border border-default rounded-[25px] shadow-sm p-4 md:p-6">
@@ -179,7 +179,7 @@
                     class="text-gray-600 file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive pl-10 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
                     placeholder="Search teachers by name, email, or profession..." value=""></div>
             <section>
-                <div class="flex gap-[20px] mb-[30px] text-gray-600">
+                <div class="flex flex-wrap gap-[20px] mb-[30px] text-gray-600">
                     <form class="outline-none">
                         <select
                             class="border-[1px] text-[14px] border-gray-300 rounded-[10px] outline-none w-[140px] py-[5px] px-[15px]"
@@ -233,7 +233,7 @@
                     </form>
 
                     <button class="flex hidden items-center gap-2 bg-gray-200 py-[6px] px-[12px] rounded-[10px]">
-                        <img class="object-cover" src="../assets/image/cross-small.png" alt="">
+                        <img class="object-cover" src="../img/logo.png" alt="">
                         <p>Clear Filters</p>
                     </button>
                 </div>
@@ -241,6 +241,8 @@
         </div>
         <div id="teacher-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[20px]">
         </div>
+        <ul id="pagination" class="flex gap-[5px] items-center justify-center mt-[50px]">
+        </ul>
     </div>
 
     <script src="../js/main.js"></script>

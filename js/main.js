@@ -1,16 +1,49 @@
 let teacherCards = document.getElementById("teacher-cards");
 let form = document.getElementById("form");
 let outerModal = document.getElementById("crud-modal");
-async function getData(content) {
+let addTeachers = document.getElementById("add-teacher-btn");
+let selected = null;
+let pagination = document.getElementById("pagination")
+let page = 1;
+
+addTeachers.addEventListener("click", function () {
+    for (let el of form) {
+        el.value = "";
+        el.checked = false;
+    }
+});
+function chandePage(i) {
+    getData(teacherCards, i);
+}
+
+async function getData(content , page) {
     try {
         let res = await axios.get(
+            `https://6921f0ae512fb4140be1d12d.mockapi.io/teachers?page=${page}&limit=10`
+        );
+        let allRes = await axios.get(
             "https://6921f0ae512fb4140be1d12d.mockapi.io/teachers"
         );
-        console.log(res.data);
+        let pages = Math.ceil(allRes.data.length / 10);
+
+        pagination.innerHTML = "";
+        pagination.innerHTML += `
+        <li onClick="changePage(${page - 1})" class="${page === 1 ? "hidden" : ""} cursor-pointer border border-gray-500 p-[7px] rounded-[10px] font-bold">
+                Previous
+            </li>`;
+
+        for (let i = 1; i <= pages; i++) {
+            pagination.innerHTML += `
+                <li onClick="chandePage(${i})" class="cursor-pointer border border-gray-500 p-[7px] rounded-[10px] font-bold">${i}
+            </li>`
+        };
+        pagination.innerHTML += `<li onClick="changePage(${page + 1})" class="${page === pages ? "hidden" : ""} cursor-pointer border border-gray-500 p-[7px] rounded-[10px] font-bold">
+                Next
+            </li>`
         content.innerHTML = "";
-        res.data.map((el) => {
+        res.data.map((el) => {2
             content.innerHTML += `
-             <div class=" max-w-[450px] w-full p-[20px] rounded-[20px] shadow-[blue] shadow-xl">
+             <div class=" max-w-[450px] w-full p-[20px] rounded-[20px] shadow-[blue] shadow-sm">
              <div class="flex justify-center">
                 <img class="w-[100px] h-[100px] object-cover rounded-[50%] mb-[15px] border border-blue-200 border-[5px]" src=${el.avatar} alt=""></div>
                 
@@ -56,7 +89,7 @@ async function getData(content) {
                     </div>
                 </div>
                 <div class="flex gap-[20px] justify-center mt-[10px]">
-                    <button
+                    <button onClick="editT(${el.id})"
                         class="py-[5px] px-[10px] bg-[white]  hover:bg-[grey]/50 text-black font-bold rounded-[10px] transition duration">Edit</button>
                     <button onClick="deleteT(${el.id})"
                         class="py-[5px] px-[10px] bg-[white]  hover:bg-[grey]/50 text-[red] font-bold rounded-[10px] transition duration">Delete</button>
@@ -65,19 +98,53 @@ async function getData(content) {
         });
 
     } catch (err) {
+        console.log(err);
+        
     }
 }
-getData(teacherCards);
+getData(teacherCards , page);
+
+async function editT(id) {
+    outerModal.classList.remove("hidden");
+    selected = id;
+    try {
+        let res = await axios.get(
+            `https://6921f0ae512fb4140be1d12d.mockapi.io/teachers/${id}`);
+
+        form[0].value = res.data.name;
+        form[1].value = res.data.age;
+        form[2].value = res.data.avatar;
+        form[3].value = res.data.experience;
+        form[4].value = res.data.profession;
+        form[5].value = res.data.number;
+        form[6].value = res.data.email;
+        form[7].value = res.data.username;
+        form[8].value = res.data.linkedin;
+        form[9].value = res.data.raiting;
+        form[10].checked = res.data.gender;
+    } catch (err) {
+        console.log(err);
+    }
+}
 
 async function addTeacher(teacherObj) {
     try {
-        await axios.post("https://6921f0ae512fb4140be1d12d.mockapi.io/teachers", teacherObj, outerModal.classList.add("hidden"));
-        getData(teacherCards);
+
+        if (selected) {
+            await axios.put(
+                `https://6921f0ae512fb4140be1d12d.mockapi.io/teachers/${selected}`, teacherObj);
+            getData(teacherCards , page);
+        } else {
+            await axios.post("https://6921f0ae512fb4140be1d12d.mockapi.io/teachers", teacherObj);
+            getData(teacherCards , page);
+        }
+        selected = null;
+        getData(teacherCards , page);
+
     } catch (err) {
         console.log(err);
 
     }
-
 }
 form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -95,13 +162,14 @@ form.addEventListener("submit", function (e) {
     teacherObj.gender = form[10].checked;
 
     addTeacher(teacherObj);
+    selected = null;
 
 });
 
 async function deleteT(id) {
     try {
         await axios.delete(`https://6921f0ae512fb4140be1d12d.mockapi.io/teachers/${id}`)
-        getData(teacherCards);
+        getData(teacherCards , page);
     } catch (err) {
         console.log(err);
 
