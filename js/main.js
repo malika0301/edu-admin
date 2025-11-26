@@ -12,11 +12,11 @@ addTeachers.addEventListener("click", function () {
         el.checked = false;
     }
 });
-function chandePage(i) {
+function changePage(i) {
     getData(teacherCards, i);
 }
 
-async function getData(content , page) {
+async function getData(content, page = 1) {
     try {
         let res = await axios.get(
             `https://6921f0ae512fb4140be1d12d.mockapi.io/teachers?page=${page}&limit=10`
@@ -32,21 +32,20 @@ async function getData(content , page) {
                 Previous
             </li>`;
 
-        for (let i = 1; i <= pages; i++) {
-            pagination.innerHTML += `
-                <li onClick="chandePage(${i})" class="cursor-pointer border border-gray-500 p-[7px] rounded-[10px] font-bold">${i}
-            </li>`
-        };
+
+        pagination.innerHTML += `<li>${page}/${pages}</li>`;
         pagination.innerHTML += `<li onClick="changePage(${page + 1})" class="${page === pages ? "hidden" : ""} cursor-pointer border border-gray-500 p-[7px] rounded-[10px] font-bold">
                 Next
             </li>`
         content.innerHTML = "";
-        res.data.map((el) => {2
+        res.data.map((el) => {
+            2
             content.innerHTML += `
              <div class=" max-w-[450px] w-full p-[20px] rounded-[20px] shadow-[blue] shadow-sm">
              <div class="flex justify-center">
+                <a href="../pages/single-teacher.html?teacherId=${el.id}">
                 <img class="w-[100px] h-[100px] object-cover rounded-[50%] mb-[15px] border border-blue-200 border-[5px]" src=${el.avatar} alt=""></div>
-                
+                </a>
                 
                 <div class="grid justify-center gap-[7px] text-center">
                     <h1>${el.name}</h1>
@@ -99,10 +98,10 @@ async function getData(content , page) {
 
     } catch (err) {
         console.log(err);
-        
+
     }
 }
-getData(teacherCards , page);
+getData(teacherCards, page);
 
 async function editT(id) {
     outerModal.classList.remove("hidden");
@@ -133,13 +132,13 @@ async function addTeacher(teacherObj) {
         if (selected) {
             await axios.put(
                 `https://6921f0ae512fb4140be1d12d.mockapi.io/teachers/${selected}`, teacherObj);
-            getData(teacherCards , page);
+            getData(teacherCards, page);
         } else {
             await axios.post("https://6921f0ae512fb4140be1d12d.mockapi.io/teachers", teacherObj);
-            getData(teacherCards , page);
+            getData(teacherCards, page);
         }
         selected = null;
-        getData(teacherCards , page);
+        getData(teacherCards, page);
 
     } catch (err) {
         console.log(err);
@@ -169,7 +168,7 @@ form.addEventListener("submit", function (e) {
 async function deleteT(id) {
     try {
         await axios.delete(`https://6921f0ae512fb4140be1d12d.mockapi.io/teachers/${id}`)
-        getData(teacherCards , page);
+        getData(teacherCards, page);
     } catch (err) {
         console.log(err);
 
