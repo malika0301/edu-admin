@@ -82,7 +82,7 @@ async function getData(content, page = 1) {
                     <p>${el.username}</p>
                     </div>
                     <div class="flex justify-center gap-[2px] items-center">
-                    <img class="h-5 w-7" src="../img/pp.jpg" alt="">
+                    <img class="h-4 w-6" src="../img/ll.png" alt="">
                     <p>${el.linkedin}</p>
                     </div>
                     </div>
@@ -105,6 +105,8 @@ getData(teacherCards, page);
 
 async function editT(id) {
     outerModal.classList.remove("hidden");
+    outerModal.classList.add("flex");
+    outerModal.classList.add("justify-center");
     selected = id;
     try {
         let res = await axios.get(
@@ -125,6 +127,11 @@ async function editT(id) {
         console.log(err);
     }
 }
+outerModal.addEventListener("click", (e) => {
+    if (e.target === outerModal) {
+        outerModal.classList.add("hidden");
+    }
+});
 
 async function addTeacher(teacherObj) {
     try {
@@ -171,7 +178,5 @@ async function deleteT(id) {
         getData(teacherCards, page);
     } catch (err) {
         console.log(err);
-
     }
-
 }
