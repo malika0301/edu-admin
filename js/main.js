@@ -5,7 +5,14 @@ let addTeachers = document.getElementById("add-teacher-btn");
 let selected = null;
 let pagination = document.getElementById("pagination")
 let page = 1;
+let sotrName = document.getElementById("sort");
+let sortNameValue = "default";
 
+sotrName.addEventListener("change" , function(e){
+sortNameValue = e.target.value;
+page = 1;
+    getData(teacherCards, page , sortNameValue )
+})
 addTeachers.addEventListener("click", function () {
     for (let el of form) {
         el.value = "";
@@ -13,13 +20,14 @@ addTeachers.addEventListener("click", function () {
     }
 });
 function changePage(i) {
-    getData(teacherCards, i);
+    getData(teacherCards, i , sortNameValue);
+
 }
 
-async function getData(content, page = 1) {
+async function getData(content, page, sortNameValue) {
     try {
         let res = await axios.get(
-            `https://6921f0ae512fb4140be1d12d.mockapi.io/teachers?page=${page}&limit=10`
+            `https://6921f0ae512fb4140be1d12d.mockapi.io/teachers?page=${page}&limit=10&${sortNameValue === "default" ? "" : `sortBy=name&order=${sortNameValue}`}`
         );
         let allRes = await axios.get(
             "https://6921f0ae512fb4140be1d12d.mockapi.io/teachers"
@@ -103,6 +111,8 @@ async function getData(content, page = 1) {
 }
 getData(teacherCards, page);
 
+getData(teacherCards, page, sortNameValue)
+
 async function editT(id) {
     outerModal.classList.remove("hidden");
     outerModal.classList.add("flex");
@@ -180,3 +190,4 @@ async function deleteT(id) {
         console.log(err);
     }
 }
+

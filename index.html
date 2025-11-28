@@ -86,10 +86,11 @@
 
     <div class="relative p-4 sm:ml-60 z-10">
         <div class="bg-[white] fixed top-0 w-full p-[20px] border-y">
-            <h1 class="font-bold text-[20px]">School Management System1</h1>
+            <h1 class="font-bold text-[20px]">School Management System</h1>
         </div>
     </div>
     <div class="p-[50px] sm:ml-60 mt-[20px]">
+        
         <div class=" space-y-2 mx-auto">
             <h1 class="font-bold text-[20px]">Dashboard Overview</h1>
             <p class="text-gray-700">Welcome to your school management dashboard</p>
@@ -135,8 +136,8 @@
             <div
                 class="container mx-auto p-[10px] border-1 border-gray-500 rounded-[10px] mt-[20px] py-[15px] justify-between items-center">
                 <h1 class="mx-[10px] text-[18px]">Quick Actions</h1>
-                <div
-                    class=" flex text-white bg-blue-600 items-center py-[20px] mt-[20px] mx-[10px] p-4 border-1 border-blue-600 hover:shadow-xl hover:border-blue-700 rounded-[10px] cursor-pointer">
+                <a href="./pages/students.html"
+                    class="flex text-white bg-blue-600 items-center py-[20px] mt-[20px] mx-[10px] p-4 border-1 border-blue-600 hover:shadow-xl hover:border-blue-700 rounded-[10px] cursor-pointer">
                     <div>
                         <img class="w-[30px] rounded-[25px]" src="./img/unnamed.jpg" alt="">
                     </div>
@@ -144,15 +145,15 @@
                         <h1>Manage Teachers</h1>
                         <p>View and manage all teachers</p>
                     </div>
-                </div>
-                <div
+                </a>
+                <a href="./pages/teachers.html"
                     class="flex text-white bg-purple-600 items-center py-[20px] mt-[20px] mx-[10px] p-4 border-1 border-purple-600 hover:shadow-xl hover:border-purple-900 rounded-[10px] cursor-pointer">
                     <img class="w-[35px]" src="./img/unnamed.png" alt="">
                     <div class="mx-[10px]">
                         <h1>Manage Students</h1>
                         <p>View and manage all students</p>
                     </div>
-                </div>
+                </a>
             </div>
     
             <div
@@ -182,13 +183,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-   
-
-
     <script src="./js/main.js"></script>
 </body>
 

@@ -5,6 +5,14 @@ let addStudents = document.getElementById("add-students-btn");
 let selected = null;
 let pagination = document.getElementById("pagination")
 let page = 1;
+let sotrName = document.getElementById("sort");
+let sortNameValue = "default";
+
+sotrName.addEventListener("change", function (e) {
+    sortNameValue = e.target.value;
+    page = 1;
+    getData(studentCards, page, sortNameValue)
+});
 
 addStudents.addEventListener("click", function () {
     for (let el of form) {
@@ -13,13 +21,13 @@ addStudents.addEventListener("click", function () {
     }
 });
 function changePage(i) {
-    getData(studentCards, i);
+    getData(studentCards, i , sortNameValue);
 };
 
-async function getData(content, page = 1) {
+async function getData(content, page, sortNameValue) {
     try {
         let res = await axios.get(
-            `https://6921f0ae512fb4140be1d12d.mockapi.io/students?page=${page}&limit=10`
+            `https://6921f0ae512fb4140be1d12d.mockapi.io/students?page=${page}&limit=10&${sortNameValue === "default" ? "" : `sortBy=name&order=${sortNameValue}`}`
         );
         let allRes = await axios.get(
             "https://6921f0ae512fb4140be1d12d.mockapi.io/students"
@@ -39,7 +47,6 @@ async function getData(content, page = 1) {
             </li>`
         content.innerHTML = "";
         res.data.map((el) => {
-            2
             content.innerHTML += `
              <div class=" max-w-[450px] w-full p-[20px] rounded-[20px] shadow-[blue] shadow-sm">
              <div class="flex justify-center">
@@ -52,7 +59,7 @@ async function getData(content, page = 1) {
                     
                     <div class="flex justify-center gap-[5px]">
                     <h2 class="text-[12px] bg-gray-200 rounded-[20px] p-[5px] text-center font-bold ">Grade-${el.grade}</h2>
-                     <div class="flex justifiy-center items-center"><svg class="w-5 h-5 transition duration-75"
+                     <div class="flex justify-center items-center"><svg class="w-5 h-5 transition duration-75"
                              xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                             viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -153,10 +160,8 @@ async function addStudent(studentObj) {
         if (selected) {
             await axios.put(
                 `https://6921f0ae512fb4140be1d12d.mockapi.io/students/${selected}`, studentObj);
-            getData(studentCards, page);
         } else {
             await axios.post("https://6921f0ae512fb4140be1d12d.mockapi.io/students", studentObj);
-            getData(studentCards, page);
         }
         selected = null;
         getData(studentCards, page);
