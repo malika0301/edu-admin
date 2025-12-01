@@ -7,11 +7,27 @@ let pagination = document.getElementById("pagination")
 let page = 1;
 let sotrName = document.getElementById("sort");
 let sortNameValue = "default";
+let search = document.getElementById("search");
+let searchValue = "";
+let professionFilter = document.getElementById("filterProf");
+let professionValue = "profession"
+
+
+search.addEventListener("input" , function(e){
+    searchValue = e.target.value;
+    getData(teacherCards, page, sortNameValue , searchValue , professionValue)
+});
+
+professionFilter.addEventListener("click" , function(e){
+    professionValue = e.target.value;
+    getData(teacherCards, page, sortNameValue, searchValue , professionValue);
+});
+
 
 sotrName.addEventListener("change" , function(e){
-sortNameValue = e.target.value;
+sortNameValue = e.target.value
 page = 1;
-    getData(teacherCards, page , sortNameValue )
+    getData(teacherCards, page , sortNameValue , searchValue , professionValue)
 })
 addTeachers.addEventListener("click", function () {
     for (let el of form) {
@@ -20,18 +36,28 @@ addTeachers.addEventListener("click", function () {
     }
 });
 function changePage(i) {
-    getData(teacherCards, i , sortNameValue);
+    getData(teacherCards, i , sortNameValue , searchValue , professionValue);
 
 }
 
-async function getData(content, page, sortNameValue) {
+async function getData(content, page, sortNameValue , searchValue , professionValue) {
     try {
         let res = await axios.get(
-            `https://6921f0ae512fb4140be1d12d.mockapi.io/teachers?page=${page}&limit=10&${sortNameValue === "default" ? "" : `sortBy=name&order=${sortNameValue}`}`
+            `https://6921f0ae512fb4140be1d12d.mockapi.io/teachers?page=${page}&limit=10${sortNameValue === "default" ? "" : `&sortBy=name&order=${sortNameValue}`}${searchValue ? `&name=${searchValue}` : ""}${professionValue === "profession" ? "" : `&filter=${professionValue}`}`
         );
         let allRes = await axios.get(
             "https://6921f0ae512fb4140be1d12d.mockapi.io/teachers"
         );
+
+        let allTeachers = allRes.data;
+        let allProfession = allTeachers.map((el) => el.profession);
+        let profession = [...new Set(allProfession)];
+        profession.map((el) =>{
+            professionFilter.innerHTML += `<option value="${el}">${el}</option>`
+        } );
+        
+        
+        
         let pages = Math.ceil(allRes.data.length / 10);
 
         pagination.innerHTML = "";
@@ -49,7 +75,7 @@ async function getData(content, page, sortNameValue) {
         res.data.map((el) => {
             2
             content.innerHTML += `
-             <div class=" max-w-[450px] w-full p-[20px] rounded-[20px] shadow-[blue] shadow-sm">
+             <div class="max-w-[450px] w-full p-[20px] rounded-[20px] shadow-[blue] shadow-sm">
              <div class="flex justify-center">
                 <a href="../pages/single-teacher.html?teacherId=${el.id}">
                 <img class="w-[100px] h-[100px] object-cover rounded-[50%] mb-[15px] border border-blue-200 border-[5px]" src=${el.avatar} alt=""></div>
@@ -74,22 +100,22 @@ async function getData(content, page, sortNameValue) {
                     <p>${el.experience}y</p></div>
                     </div>
                     <div class="flex justify-center">
-       <img class="h-5 w-5" src="../img/star (1).svg345.jpg" alt=""> <p>
-         ${el.raiting}</p></div>
-                    <div class="mt-[10px] text-gray-700 gap-[3px]">
-                    <div class="flex justify-center gap-[2px] items-center">
-                    <img class="h-5 w-7" src="../img/pp.jpg" alt="">
-                    <p>${el.number}</p>
+                     <img class="h-5 w-5" src="../img/star (1).svg345.jpg" alt=""> <p>
+                        ${el.raiting}</p></div>
+                 <div class="mt-[10px] text-gray-700 flex flex-col gap-[5px]">
+                    <div class="flex  gap-[5px] items-center">
+                      <img class="h-5 w-7" src="../img/pp.jpg" alt="">
+                       <p>${el.number}</p>
                      </div>
-                     <div class="flex justify-center gap-[2px] items-center">
+                     <div class="flex  gap-[5px] items-center">
                     <img class="h-5 w-5" src="../img/ee.jpg" alt="">
                     <p>${el.email}</p>
                     </div>
-                    <div class="flex justify-center gap-[2px] items-center">
+                    <div class="flex  gap-[5px] items-center">
                     <img class="h-5 w-5" src="../img/tt.jpg" alt="">
                     <p>${el.username}</p>
                     </div>
-                    <div class="flex justify-center gap-[2px] items-center">
+                    <div class="flex  gap-[5px] items-center">
                     <img class="h-4 w-6" src="../img/ll.png" alt="">
                     <p>${el.linkedin}</p>
                     </div>
@@ -109,9 +135,8 @@ async function getData(content, page, sortNameValue) {
 
     }
 }
-getData(teacherCards, page);
 
-getData(teacherCards, page, sortNameValue)
+getData(teacherCards, page, sortNameValue, searchValue, professionValue);
 
 async function editT(id) {
     outerModal.classList.remove("hidden");
@@ -137,6 +162,7 @@ async function editT(id) {
         console.log(err);
     }
 }
+getData(teacherCards, page, sortNameValue, searchValue, professionValue);
 outerModal.addEventListener("click", (e) => {
     if (e.target === outerModal) {
         outerModal.classList.add("hidden");
@@ -190,4 +216,7 @@ async function deleteT(id) {
         console.log(err);
     }
 }
+getData(teacherCards, page, sortNameValue, searchValue, professionValue);
+
+
 

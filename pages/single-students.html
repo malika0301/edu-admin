@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,12 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="../js/single-students.js"></script>
 </head>
+
 <body>
-    <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button"
+    <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar"
+        type="button"
         class="text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base ms-3 mt-3 text-sm p-2 focus:outline-none inline-flex sm:hidden">
         <span class="sr-only">Open sidebar</span>
         <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -43,8 +47,9 @@
                 <li class="bg-gradient-to-r from-blue-500 text-white to-purple-600 rounded-[15px] py-[10px]">
                     <a href="./teachers.html"
                         class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                        <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                            viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
                                 d="M16 19h4a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-2m-2.236-4a3 3 0 1 0 0-4M3 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                         </svg>
@@ -54,8 +59,9 @@
                 <li>
                     <a href="./students.html"
                         class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                        <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                            viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M5 19V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v13H7a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h12M9 3v14m7 0v4" />
                         </svg>
@@ -65,8 +71,9 @@
                 <li>
                     <a href="#"
                         class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                        <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                            viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m13.46 8.291 3.849-3.849a1.5 1.5 0 0 1 2.122 0l.127.127a1.5 1.5 0 0 1 0 2.122l-3.84 3.838a4 4 0 0 0-2.258-2.238Zm0 0a4 4 0 0 1 2.263 2.238l3.662-3.662a8.961 8.961 0 0 1 0 10.27l-3.676-3.676m-2.25-5.17 3.678-3.676a8.961 8.961 0 0 0-10.27 0l3.662 3.662a4 4 0 0 0-2.238 2.258L4.615 6.863a8.96 8.96 0 0 0 0 10.27l3.662-3.662a4 4 0 0 0 2.258 2.238l-3.672 3.676a8.96 8.96 0 0 0 10.27 0l-3.662-3.662a4.001 4.001 0 0 0 2.238-2.262m0 0 3.849 3.848a1.5 1.5 0 0 1 0 2.122l-.127.126a1.499 1.499 0 0 1-2.122 0l-3.838-3.838a4 4 0 0 0 2.238-2.258Zm.29-1.461a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm-7.718 1.471-3.84 3.838a1.5 1.5 0 0 0 0 2.122l.128.126a1.5 1.5 0 0 0 2.122 0l3.848-3.848a4 4 0 0 1-2.258-2.238Zm2.248-5.19L6.69 4.442a1.5 1.5 0 0 0-2.122 0l-.127.127a1.5 1.5 0 0 0 0 2.122l3.849 3.848a4 4 0 0 1 2.238-2.258Z" />
                         </svg>
@@ -77,110 +84,27 @@
         </div>
     </aside>
     <div class="flex items-center justify-center">
-    
+
     </div>
     <div class="relative p-4 sm:ml-60 z-10">
         <div class="bg-[white] fixed top-0 w-full p-[20px] border-y">
             <h1 class="font-bold text-[20px]">School Management System</h1>
         </div>
     </div>
-    <div class="p-[50px] sm:ml-60 mt-[20px]">
-        <div class="flex flex-col gap-6 rounded-xl border border-gray-200 lg:col-span-2 bg-white ">
-            <div class="flex flex-col gap-2 w-full">
-                <div class=" grid  grid-cols-2  items-start gap-1.5 px-6 pt-6 w-full  ">
-                    <div class=" bg-gray-200 col-span-2
-                                            items-center justify-center rounded-xl p-[3px] grid w-full  grid-cols-2 mb-[20px]">
-                        <button class=" flex-1 items-center justify-center gap-1.5 rounded-xl border border-transparent
-                                                     px-2 py-1 text-sm hover:bg-white cursor-pointer">Contact Info</button>
-                        <button class="  flex-1 items-center justify-center gap-1.5 rounded-xl border border-transparent 
-                                                    px-2 py-1 text-sm  hover:bg-white cursor-pointer">Assigne Students
-                            (7)</button>
+    <main>
+            <div class="p-[50px] sm:ml-60 mt-[20px]">
+                <div>
+                    <div class="flex gap-[10px] mb-[20px]">
+                        <a class="text-gray-400 cursor-pointer hover:text-blue-500" href="../index.html">Dashboard</a>/<a
+                            class="text-gray-400 cursor-pointer hover:text-blue-500" href="../pages/students.html">Students</a>/<a
+                            href="">Name</a>
                     </div>
                 </div>
-                <div class="px-6 pb-6">
-                    <div class="flex-1 outline-none space-y-4">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="p-4 rounded-lg  bg-gray-100">
-                                <div class="flex items-center gap-3 mb-2 ">
-                                    <div class="p-2 rounded-lg bg-blue-200">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            class="lucide lucide-phone h-5 w-5 text-blue-600 text-blue-400" aria-hidden="true">
-                                            <path
-                                                d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm  text-black-100">Phone</p>
-                                        <p class="text-black">1-437-509-1528 x211</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="p-4 rounded-lg bg-gray-100">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <div class="p-2 rounded-lg bg-green-100 ">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="lucide lucide-mail h-5 w-5 text-green-600 "
-                                            aria-hidden="true">
-                                            <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
-                                            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-gray-400 ">Email</p>
-                                        <p class="text--black  truncate">Abel_Daugherty@gmail.com
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="p-4 rounded-lg bg-gray-100">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <div class="p-2 rounded-lg bg-blue-100 ">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="lucide lucide-send h-5 w-5 text-blue-400"
-                                            aria-hidden="true">
-                                            <path
-                                                d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z">
-                                            </path>
-                                            <path d="m21.854 2.147-10.94 10.939"></path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-gray-400">Telegram</p>
-                                        <p class="text-black-200">@abeldaugherty</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="p-4 rounded-lg bg-gray-100">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <div class="p-2 rounded-lg  bg-blue-100">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="lucide lucide-linkedin h-5 w-5 text-blue-600"
-                                            aria-hidden="true">
-                                            <path
-                                                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
-                                            </path>
-                                            <rect width="4" height="12" x="2" y="9"></rect>
-                                            <circle cx="4" cy="4" r="2"></circle>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-gray-400">LinkedIn</p>
-                                        <p class="text-black-400 truncate">
-                                            linkedin.com/in/abel-daugherty</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                <div id="single-student" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
+                <div id="message" class="mt-4 text-sm text-red-600"></div>
+            
+        </section>
+    </main>
 </body>
+
 </html>

@@ -7,11 +7,26 @@ let pagination = document.getElementById("pagination")
 let page = 1;
 let sotrName = document.getElementById("sort");
 let sortNameValue = "default";
+let searchS = document.getElementById("searchs");
+let searchSValue = "";
+let gradeFilter = document.getElementById("filterGrade");
+let gradeValue = "grade";
+
+
+searchS.addEventListener("input", function (e) {
+    searchSValue = e.target.value;
+    getData(studentCards, page, sortNameValue, searchSValue, gradeValue) 
+});
+
+gradeFilter.addEventListener("click", function (e) {
+    gradeValue = e.target.value;
+    getData(studentCards, page, sortNameValue, searchSValue, gradeValue);
+})
 
 sotrName.addEventListener("change", function (e) {
     sortNameValue = e.target.value;
     page = 1;
-    getData(studentCards, page, sortNameValue)
+    getData(studentCards, page, sortNameValue , searchSValue)
 });
 
 addStudents.addEventListener("click", function () {
@@ -21,17 +36,26 @@ addStudents.addEventListener("click", function () {
     }
 });
 function changePage(i) {
-    getData(studentCards, i , sortNameValue);
+    getData(studentCards, i, sortNameValue , searchSValue);
 };
 
-async function getData(content, page, sortNameValue) {
+async function getData(content, page, sortNameValue , searchSValue) {
     try {
         let res = await axios.get(
-            `https://6921f0ae512fb4140be1d12d.mockapi.io/students?page=${page}&limit=10&${sortNameValue === "default" ? "" : `sortBy=name&order=${sortNameValue}`}`
+            `https://6921f0ae512fb4140be1d12d.mockapi.io/students?page=${page}&limit=10${sortNameValue === "default" ? "" : `&sortBy=name&order=${sortNameValue}`}${searchSValue ? `&name=${searchSValue}` : ""}${gradeValue === "grade" ? "" : `&grade=${gradeValue}`}`
         );
         let allRes = await axios.get(
             "https://6921f0ae512fb4140be1d12d.mockapi.io/students"
         );
+
+        let allStudents = allRes.data;
+        let allGrade = allStudents.map((el) => el.grade);
+        let grade = [...new Set(allGrade)];
+        gradeFilter.innerHTML = '<option value="grade">All grades</option>';
+        grade.map((el) => {
+            gradeFilter.innerHTML += `<option value="${el}">${el}</option>`
+        });
+
         let pages = Math.ceil(allRes.data.length / 10);
 
         pagination.innerHTML = "";
@@ -57,7 +81,7 @@ async function getData(content, page, sortNameValue) {
                 <div class="grid justify-center items-center gap-[7px] text-center">
                     <h1>${el.name}</h1>
                     
-                    <div class="flex justify-center gap-[5px]">
+                    <div class="flex justify-center mb-[15px] gap-[5px]">
                     <h2 class="text-[12px] bg-gray-200 rounded-[20px] p-[5px] text-center font-bold ">Grade-${el.grade}</h2>
                      <div class="flex justify-center items-center"><svg class="w-5 h-5 transition duration-75"
                              xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -68,40 +92,33 @@ async function getData(content, page, sortNameValue) {
                     </div>
             <div>
             <div class="mb-[15px]"><div class="flex gap-[20px] text-gray-700">
-                    <div class="w-full h-[4px] rounded-[50px] bg-[red]">
+                    <div class="w-full h-[4px] rounded-[50px] bg-[red] mb-[30px]">
                         <div style="width: ${el.rating}%" class="h-[4px] rounded-[50px] bg-[blue]"></div>
-                           <div class="flex justify-between items-center mt-[5px]">
-                            <div class="flex justify-center items-center">
-                               <img class="h-5 w-5" src="../img/star (1).svg345.jpg" alt=""> <p>
-                                 ${el.rating}</p>
+                           <div class="flex justify-between items-center mt-[10px]">
+                            <div class="flex justify-center items-center">⭐${el.rating}</p>
                             </div>
 
-                            <div class="flex"><svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand"
-                               aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                               viewBox="0 0 24 24">
-                               <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
-                                d="M16 19h4a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-2m-2.236-4a3 3 0 1 0 0-4M3 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                   </svg>
+                            <div class="flex">🪙
                                 <p>${el.coins}y</p>
                             </div></div>
                         </div>
                     </div></div>
                 
                      
-                    <div class="mt-[10px] text-gray-700 gap-[3px]">
-                    <div class="flex justify-center gap-[2px] items-center">
+                    <div class="mt-[15px] text-gray-700 gap-[5px] flex justify-center flex-col">
+                    <div class="flex gap-[2px] items-center ">
                     <img class="h-5 w-7" src="../img/pp.jpg" alt="">
                     <p>${el.number}</p>
                      </div>
-                     <div class="flex justify-center gap-[2px] items-center">
+                     <div class="flex gap-[2px] items-center">
                     <img class="h-5 w-5" src="../img/ee.jpg" alt="">
                     <p>${el.email}</p>
                     </div>
-                    <div class="flex justify-center gap-[2px] items-center">
+                    <div class="flex gap-[2px] items-center">
                     <img class="h-5 w-5" src="../img/tt.jpg" alt="">
                     <p>${el.user}</p>
                     </div>
-                    <div class="flex justify-center gap-[2px] items-center">
+                    <div class="flex gap-[2px] items-center">
                     <img class="h-4 w-6" src="../img/ll.png" alt="">
                     <p>${el.lin}</p>
                     </div>
@@ -121,7 +138,7 @@ async function getData(content, page, sortNameValue) {
 
     }
 }
-getData(studentCards, page);
+getData(studentCards, page , sortNameValue, searchSValue, gradeValue) ;
 
 async function editS(id) {
     outerModal.classList.remove("hidden");
@@ -153,7 +170,6 @@ outerModal.addEventListener("click", (e) => {
     }
 });
 
-
 async function addStudent(studentObj) {
     try {
 
@@ -164,7 +180,7 @@ async function addStudent(studentObj) {
             await axios.post("https://6921f0ae512fb4140be1d12d.mockapi.io/students", studentObj);
         }
         selected = null;
-        getData(studentCards, page);
+        getData(studentCards, page, sortNameValue, searchSValue, gradeValue) ;
 
     } catch (err) {
         console.log(err);
@@ -199,5 +215,6 @@ async function deleteS(tId, sId) {
         console.log(err);
 
     }
+    getData(studentCards, page, sortNameValue, searchSValue, gradeValue) ;
 
 }
